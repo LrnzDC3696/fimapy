@@ -1,5 +1,6 @@
-from django.urls import include, re_path
+from django.urls import path
+from .views import hello_world
 
 urlpatterns = [
-    re_path(r'^', include('base.urls')),
+    path("", hello_world, name="base_hello-world"),
 ]
