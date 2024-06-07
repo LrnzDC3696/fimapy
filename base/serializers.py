@@ -16,9 +16,14 @@ class IncomeCategorySerializer(serializers.ModelSerializer):
 
 
 class AccountSerializer(serializers.ModelSerializer):
+    current_balance = serializers.SerializerMethodField()
+
     class Meta:
         model = Account
         fields = "__all__"
+
+    def get_current_balance(self, obj):
+        return obj.calculate_balance()
 
 
 class TransferSerializer(serializers.ModelSerializer):
